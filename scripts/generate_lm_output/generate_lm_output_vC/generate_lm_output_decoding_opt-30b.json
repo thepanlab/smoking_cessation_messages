@@ -1,0 +1,13 @@
+{
+    "list_filenames":["/home/pcallec/smoking_cessation_messages/results/vB/v1/prompt_input_v1/prompt_input_v1_train.csv"],
+    "path_output": "/home/pcallec/smoking_cessation_messages/results/vC/opt-30b_generated",
+    "language_model": "facebook/opt-30b",
+    "decoding": [ {"max_length":400, "top_p":0.9, "top_k":50, "temperature":0.8},
+                    {"max_length":400, "top_p":0.9, "top_k":50272, "temperature":1},
+                    {"max_length":400, "top_p":0.95, "top_k":50272, "temperature":1},
+                    {"max_length":400, "top_p":1, "top_k":50272, "temperature":0.9},
+                    {"max_length":400, "top_p":1, "top_k":50272, "temperature":0.7},
+                    {"max_length":400, "top_p":1, "top_k":40, "temperature":1},
+                    {"max_length":400, "top_p":1, "top_k":30, "temperature":1},
+                    {"max_length":400, "top_p":1, "top_k":40, "temperature":0.7}]
+}

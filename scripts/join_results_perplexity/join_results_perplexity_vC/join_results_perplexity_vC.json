@@ -1,0 +1,11 @@
+{
+    "perplexity_filenames":["/home/pcallec/smoking_cessation_messages/results/vC/gptj6b_perplexity/perplexity_results_gptj6b.csv",
+                            "/home/pcallec/smoking_cessation_messages/results/vC/bloom-7b1_perplexity/perplexity_results_bloom-7b1.csv",
+                            "/home/pcallec/smoking_cessation_messages/results/vC/opt-6.7b_perplexity/perplexity_results_opt-6.7b.csv",
+                            "/home/pcallec/smoking_cessation_messages/results/vC/opt-13b_perplexity/perplexity_results_opt-13b.csv", 
+                            "/home/pcallec/smoking_cessation_messages/results/vC/opt-30b_perplexity/perplexity_results_opt-30b.csv"],
+    "LIWC_file": "/home/pcallec/smoking_cessation_messages/data/vC/LIWC-22 Results - joined_results - LIWC Analysis.csv",
+    "n_parallel_processes":"all",
+    "column_to_analyze":"Message",
+    "path_output":"../results/vC/join_perplexity_reduced/"
+}

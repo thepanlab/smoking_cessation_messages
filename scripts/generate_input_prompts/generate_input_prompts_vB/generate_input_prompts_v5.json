@@ -1,0 +1,12 @@
+{
+    "file_path": "../results/split_2_parts/train.csv",
+    "seed": 1234,
+    "number_of_messages_per_prompt":4,
+    "number_of_prompts":100,
+    "location_prompt": "start",
+    "prompt message": "Task: Write messages that are on the same topic.",
+    "symbol":"message numbers",
+    "separation_lines":"\n\n",
+    "path_output":"../results/vB/prompt_input_v5",
+    "filename_output":"prompt_input_v5_train"
+}

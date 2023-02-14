@@ -1,0 +1,9 @@
+{
+    "list_filenames":["../results/vB/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b.csv",
+                      "../results/vB/opt-6.7b_generated/prompt_input_v2_train_gen_opt-6.7b.csv",
+                      "../results/vB/opt-6.7b_generated/prompt_input_v3_train_gen_opt-6.7b.csv",
+                      "../results/vB/opt-6.7b_generated/prompt_input_v4_train_gen_opt-6.7b.csv",
+                      "../results/vB/opt-6.7b_generated/prompt_input_v5_train_gen_opt-6.7b.csv"],
+    "number_of_messages_per_prompt":4,
+    "path_output":"../results/vB/v2/opt-6.7b_generated_to_sentences"    
+}

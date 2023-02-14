@@ -1,0 +1,13 @@
+{
+    "list_filenames":["../results/prompt_input_v2/prompt_input_v2_train.csv"],
+    "path_output": "../results/gptj6b_generated/decoding",
+    "language_model": "EleutherAI/gpt-j-6B",
+    "decoding": [ {"max_length":400, "top_p":0.9, "top_k":50, "temperature":0.8},
+                  {"max_length":400, "top_p":0.9, "top_k":50257, "temperature":1},
+                  {"max_length":400, "top_p":0.95, "top_k":50257, "temperature":1},
+                  {"max_length":400, "top_p":1, "top_k":50257, "temperature":0.9},
+                  {"max_length":400, "top_p":1, "top_k":50257, "temperature":0.7},
+                  {"max_length":400, "top_p":1, "top_k":40, "temperature":1},
+                  {"max_length":400, "top_p":1, "top_k":30, "temperature":1},
+                  {"max_length":400, "top_p":1, "top_k":40, "temperature":0.7}]
+}

@@ -1,0 +1,11 @@
+{
+    "file_path": "../results/split_2_parts/train.csv",
+    "seed": 1234,
+    "number_of_messages_per_prompt":5,
+    "number_of_prompts":100,
+    "location_prompt": "end",
+    "prompt message": "Write messages like the previous ones:",
+    "symbol":"*",
+    "path_output":"../results/prompt_input_v9",
+    "filename_output":"prompt_input_v9_train"
+}

@@ -1,0 +1,14 @@
+{
+    "file_path": "../data/Treatment messages by type 9-23-21.csv",
+    "number_of_messages": 899,
+    "split": "True",
+    "number_of_splits": 2, 
+    "seed": 1234,
+    "number_of_messages_per_prompt":5,
+    "location_prompt": "start",
+    "prompt message": "Messages about how to stop smoking:",
+    "symbol":"numbers",
+    "path_output_split":"../results/split_2_parts",
+    "path_output_prompt_format":"../results/prompt_v4",
+    "prefix_name":"prompt_format_v4"
+}

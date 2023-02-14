@@ -1,0 +1,12 @@
+{
+    "list_filenames":["../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v1.csv",
+                        "../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v2.csv",
+                        "../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v3.csv",
+                        "../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v4.csv",
+                        "../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v5.csv",
+                        "../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v6.csv",
+                        "../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v7.csv",
+                        "../results/vC/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b_decoding_v8.csv"],
+    "number_of_messages_per_prompt":4,
+    "path_output":"../results/vC/opt-6.7b_generated_to_sentences"    
+}

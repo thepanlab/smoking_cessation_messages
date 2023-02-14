@@ -1,0 +1,6 @@
+{
+    "LIWC_file": "/home/pcallec/smoking_cessation_messages/results/LIWC/vC/LIWC-22 Results - joined_results - LIWC Analysis.csv",
+    "column_features": ["WC", "Clout", "Tone", "BigWords", "Authentic"],
+    "path_directory_output": "/home/pcallec/smoking_cessation_messages/results/vC/LIWC_processed",
+    "suffix_file": "LIWC_v1"
+}

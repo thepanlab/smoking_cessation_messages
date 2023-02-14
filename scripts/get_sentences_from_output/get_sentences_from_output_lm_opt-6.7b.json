@@ -1,0 +1,9 @@
+{
+    "list_filenames":["../results/opt-6.7b_generated/prompt_input_v1_train_gen_opt-6.7b.csv",
+                      "../results/opt-6.7b_generated/prompt_input_v2_train_gen_opt-6.7b.csv",
+                      "../results/opt-6.7b_generated/prompt_input_v3_train_gen_opt-6.7b.csv",
+                      "../results/opt-6.7b_generated/prompt_input_v4_train_gen_opt-6.7b.csv",
+                      "../results/opt-6.7b_generated/prompt_input_v5_train_gen_opt-6.7b.csv",
+                      "../results/opt-6.7b_generated/prompt_input_v6_train_gen_opt-6.7b.csv"],
+    "path_output":"../results/opt-6.7b_generated_to_sentences"    
+}

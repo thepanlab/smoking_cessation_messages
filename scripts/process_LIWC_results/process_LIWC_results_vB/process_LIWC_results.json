@@ -1,0 +1,7 @@
+{
+    "LIWC_file": "/home/pcallec/smoking_cessation_messages/data/vB/LIWC-22 Results - joined_results - LIWC Analysis opt30b.csv",
+    "column_features": ["WC", "Clout", "Tone", "BigWords", "Authentic", "Affect", "emo_pos", "emo_neg", "emo_anx", "i", "negate",
+                        "substances", "wellness", "mental", "risk", "feeling"],
+    "path_directory_output": "/home/pcallec/smoking_cessation_messages/results/vB/LIWC_processed",
+    "suffix_file": "vB_prompt"  
+}

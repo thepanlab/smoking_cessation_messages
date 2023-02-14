@@ -1,0 +1,12 @@
+{
+    "file_path": "../results/split_2_parts/train.csv",
+    "seed": 1234,
+    "number_of_messages_per_prompt":4,
+    "number_of_prompts":100,
+    "location_prompt": "start",
+    "prompt message": "Messages to help you quit smoking:",
+    "symbol":"numbers",
+    "separation_lines":"\n\n",
+    "path_output":"../results/vB/prompt_input_v2",
+    "filename_output":"prompt_input_v2_train"
+}

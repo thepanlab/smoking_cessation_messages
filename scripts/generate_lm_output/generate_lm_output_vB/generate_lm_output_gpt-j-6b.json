@@ -1,0 +1,13 @@
+{
+    "list_filenames":["/home/pcallec/smoking_cessation_messages/results/vB/prompt_input_v1/prompt_input_v1_train.csv",
+                        "/home/pcallec/smoking_cessation_messages/results/vB/prompt_input_v2/prompt_input_v2_train.csv",
+                        "/home/pcallec/smoking_cessation_messages/results/vB/prompt_input_v4/prompt_input_v4_train.csv",
+                        "/home/pcallec/smoking_cessation_messages/results/vB/prompt_input_v5/prompt_input_v5_train.csv"],
+    "path_output":"/home/pcallec/smoking_cessation_messages/results/vB/gptj6b_generated",
+    "language_model":"EleutherAI/gpt-j-6B",
+    "max_length":400,
+    "top_p":0.9,
+    "top_k":50,
+    "temperature":0.8
+    
+}

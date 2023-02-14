@@ -1,0 +1,6 @@
+{
+    "list_filenames":["../results/split_2_parts/validation.csv"],
+    "stride":1024,
+    "language_model":"EleutherAI/gpt-j-6B",
+    "path_output":"../results/gptj6b_perplexity"    
+}

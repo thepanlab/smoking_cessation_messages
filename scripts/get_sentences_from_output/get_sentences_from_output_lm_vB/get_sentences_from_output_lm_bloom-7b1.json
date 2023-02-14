@@ -1,0 +1,9 @@
+{
+    "list_filenames":["../results/vB/bloom-7b1_generated/prompt_input_v1_train_gen_bloom-7b1.csv",
+                      "../results/vB/bloom-7b1_generated/prompt_input_v2_train_gen_bloom-7b1.csv",
+                      "../results/vB/bloom-7b1_generated/prompt_input_v3_train_gen_bloom-7b1.csv",
+                      "../results/vB/bloom-7b1_generated/prompt_input_v4_train_gen_bloom-7b1.csv",
+                      "../results/vB/bloom-7b1_generated/prompt_input_v5_train_gen_bloom-7b1.csv"],
+    "number_of_messages_per_prompt":4,
+    "path_output":"../results/vB/bloom-7b1_generated_to_sentences"    
+}

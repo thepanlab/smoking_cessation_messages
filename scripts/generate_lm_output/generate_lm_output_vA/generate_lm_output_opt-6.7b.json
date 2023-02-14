@@ -1,0 +1,14 @@
+{
+    "list_filenames":["../results/prompt_input_v1/prompt_input_v1_train.csv",
+                      "../results/prompt_input_v2/prompt_input_v2_train.csv",
+                      "../results/prompt_input_v3/prompt_input_v3_train.csv",
+                      "../results/prompt_input_v4/prompt_input_v4_train.csv",
+                      "../results/prompt_input_v5/prompt_input_v5_train.csv",
+                      "../results/prompt_input_v6/prompt_input_v6_train.csv" ],
+    "path_output": "../results/opt-6.7b_generated",
+    "language_model": "facebook/opt-6.7b",
+    "max_length":400,
+    "top_p":0.9,
+    "top_k":50,
+    "temperature":0.8
+}
