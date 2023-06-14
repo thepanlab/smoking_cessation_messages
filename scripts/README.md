@@ -40,6 +40,8 @@ add GLMM and EMMS for prompt and decoding
 
 1. `Prepare sentences for surveys.ipynb`: From the joined messages selects randomly 100 for each model.
 
+1. `Prepare format txt for Qualtrics.ipynb`: It creates Advanced Format TXt to be import in Qualtrics.
+
 Commands used:
 ```bash
 python prepare_dataset_to_prompts -j prepare_dataset_to_prompts_v1.json
