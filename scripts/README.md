@@ -29,13 +29,16 @@ Put your standalone scripts (Python and bash) as well as jupyter notebooks here.
 
 1. `join_results_perplexity/join_results_perplexity.py`: it joins the perplexities values from different models.
 
-1. `join_all_sentences/join_all_sentences_v2.py`: it joins all final sentences through different models for prompt selection
+1. `join_all_sentences/join_all_sentences_v2.py`: it joins all final sentences through different combinations.
 
-1. `join_all_sentences/join_all_sentences_v2_vC.py`: it joins all final sentences through different models for decoding selection
+1. `join_all_sentences/join_all_sentences_v2_vC.py`: it joins all final sentences through different combinations and the original messages. The difference with the previous function is the number of outputs. It outputs 2 csv files: one with type original and the other with type: train or validation according to the belonging of the original message.
 
 1. `process_LIWC_results/process_LIWC_results.py`" it calculates the mean and std error for selected LIWC metrics.
 
+TODO:
+add GLMM and EMMS for prompt and decoding 
 
+1. 
 Commands used:
 ```bash
 python prepare_dataset_to_prompts -j prepare_dataset_to_prompts_v1.json
@@ -122,4 +125,10 @@ python get_sentences_from_output_ChatGPT.py -j get_sentences_from_output_ChatGPT
 python postprocess_on_selfBLEU.py -j ./postprocess_on_selfBLEU_ChatGPT/postprocess_on_selfBLEU4.json
 python discard_on_selfBLEU.py -j ./discard_on_selfBLEU_ChatGPT/discard_on_selfBLEU4.json
 python discard_on_criteria.py -j discard_on_criteria_ChatGPT.json
+
+# join sentences to be analyzed with LIWC
+python join_all_sentences_v2_vC.py -j ./join_all_sentences/join_all_sentences_ChatGPT/join_all_sentences_ChatGPT.json
 ```
+
+
+

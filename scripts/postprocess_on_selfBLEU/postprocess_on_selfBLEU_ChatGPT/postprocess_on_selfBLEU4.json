@@ -1,0 +1,7 @@
+{
+    "list_filenames":["/home/pcallec/smoking_cessation_messages/results/ChatGPT/generated_to_sentences/prompt_input_v4_train_gen_ChatGPT_to_sentences.csv"],
+    "n_parallel_processes":"all",
+    "column_to_analyze":"Message",
+    "n_grams":4,
+    "path_output":"/home/pcallec/smoking_cessation_messages/results/ChatGPT/self-BLEU-4/"    
+}

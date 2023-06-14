@@ -91,8 +91,10 @@ def join_files(config_json):
             model_name = "opt-13b"
         elif "opt-30b" in filename:
             model_name = "opt-30b"
+        elif "ChatGPT" in filename:
+            model_name = "ChatGPT"
         else:
-            raise ValueError("Model not supported. Models supported gpt-j-6b, bloom-7b1, opt-6.7b, opt-13b, and opt-30b.")
+            raise ValueError("Model not supported. Models supported gpt-j-6b, bloom-7b1, opt-6.7b, opt-13b, opt-30b and ChatGPT.")
         
         m = re.search('(?<=v)[0-9]+', filename)
 
@@ -100,18 +102,27 @@ def join_files(config_json):
             raise ValueError("filename doesn't contain a version")
         
         # Extract decoding version
-        m2 = re.search('(?<=decoding_v)[0-9]+', filename)
+        
+        if model_name == "ChatGPT":
+            model_prompt_version = f"{model_name}_prompt_v{m.group(0)}"
+            df_temp["model"] = model_name
+            df_temp["prompt"] = f"v{m.group(0)}"
+            df_temp["decoding"] = None
+            df_temp["type"] = model_prompt_version
 
+            df_all = pd.concat([df_all, df_temp], ignore_index=True)
+            df_all_2 = pd.concat([df_all_2, df_temp], ignore_index=True)
+        else:
+            m2 = re.search('(?<=decoding_v)[0-9]+', filename)
+            # add v1 and model name
+            model_prompt_version = f"{model_name}_prompt_v{m.group(0)}_decoding_v{m2.group(0)}"
+            df_temp["model"] = model_name
+            df_temp["prompt"] = f"v{m.group(0)}"
+            df_temp["decoding"] = f"v{m2.group(0)}"
+            df_temp["type"] = model_prompt_version
 
-        # add v1 and model name
-        model_prompt_version = f"{model_name}_prompt_v{m.group(0)}_decoding_v{m2.group(0)}"
-        df_temp["model"] = model_name
-        df_temp["prompt"] = f"v{m.group(0)}"
-        df_temp["decoding"] = f"v{m2.group(0)}"
-        df_temp["type"] = model_prompt_version
-
-        df_all = pd.concat([df_all, df_temp], ignore_index=True)
-        df_all_2 = pd.concat([df_all_2, df_temp], ignore_index=True)
+            df_all = pd.concat([df_all, df_temp], ignore_index=True)
+            df_all_2 = pd.concat([df_all_2, df_temp], ignore_index=True)
 
     os.makedirs(config_json["path_directory_output"], exist_ok = True)
 

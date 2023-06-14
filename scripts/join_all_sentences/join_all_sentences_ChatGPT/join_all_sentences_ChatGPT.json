@@ -1,0 +1,12 @@
+{
+    "original_data": "../../data/Treatment messages by type 9-23-21.csv",
+    "partition_data": ["../../results/split_2_parts/train.csv",
+                        "../../results/split_2_parts/validation.csv"],
+    "directory_paths":["../../results/vC/criteria/prompt_input_v1_train_gen_gpt-j-6B_decoding_v1_to_sentences_selfbleu4_thr-0.5_criteria_remaining.csv",
+                        "../../results/vC/criteria/prompt_input_v1_train_gen_bloom-7b1_decoding_v1_to_sentences_selfbleu4_thr-0.5_criteria_remaining.csv",
+                        "../../results/vC/criteria/prompt_input_v1_train_gen_opt-6.7b_decoding_v1_to_sentences_selfbleu4_thr-0.5_criteria_remaining.csv",
+                        "../../results/vC/criteria/prompt_input_v1_train_gen_opt-13b_decoding_v1_to_sentences_selfbleu4_thr-0.5_criteria_remaining.csv",
+                        "../../results/vC/criteria/prompt_input_v1_train_gen_opt-30b_decoding_v1_to_sentences_selfbleu4_thr-0.5_criteria_remaining.csv",
+                        "../../results/ChatGPT/criteria/prompt_input_v4_train_gen_ChatGPT_to_sentences_selfbleu4_thr-0.5_criteria_value.csv"],
+    "path_directory_output":"../../results/vC/joined_output_vC_ChatGPT"
+}

@@ -1,0 +1,8 @@
+{  
+    "list_filenames":["/home/pcallec/smoking_cessation_messages/results/ChatGPT/self-BLEU-4/reduced/prompt_input_v4_train_gen_ChatGPT_to_sentences_selfbleu4_thr-0.5.csv"],
+    "criteria_names":["app", "underscore","less_than_six_words"],
+    "criteria":[["app","application","apps"],["_"],["less_than_six_words"]],
+    "n_parallel_processes":"all",
+    "column_to_analyze":"Message",
+    "path_output":"/home/pcallec/smoking_cessation_messages/results/ChatGPT/criteria/"
+}
