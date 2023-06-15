@@ -42,6 +42,10 @@ add GLMM and EMMS for prompt and decoding
 
 1. `Prepare format txt for Qualtrics.ipynb`: It creates Advanced Format TXt to be import in Qualtrics.
 
+1. `prepare_qualtrics_for_analysis.ipynb`: It prepares the surveys results to be analyzed for GLMM and LIWC of the generated messages
+
+1. ``
+
 Commands used:
 ```bash
 python prepare_dataset_to_prompts -j prepare_dataset_to_prompts_v1.json
