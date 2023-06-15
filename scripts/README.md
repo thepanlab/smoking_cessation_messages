@@ -44,7 +44,7 @@ add GLMM and EMMS for prompt and decoding
 
 1. `prepare_qualtrics_for_analysis.ipynb`: It prepares the surveys results to be analyzed for GLMM and LIWC of the generated messages
 
-1. ``
+1. `prepare_qualtrics_for_analysis_modified.ipynb`: It analyzed the revision results for statistics and BLEU-4
 
 Commands used:
 ```bash
