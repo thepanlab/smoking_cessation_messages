@@ -42,9 +42,11 @@ add GLMM and EMMS for prompt and decoding
 
 1. `Prepare format txt for Qualtrics.ipynb`: It creates Advanced Format TXt to be import in Qualtrics.
 
+1. `reshape_qualtrics_results.ipynb`: It reshapes the surveys results from horizontal to vertical.
+
 1. `prepare_qualtrics_for_analysis.ipynb`: It prepares the surveys results to be analyzed for GLMM and LIWC of the generated messages
 
-1. `prepare_qualtrics_for_analysis_modified.ipynb`: It analyzed the revision results for statistics and BLEU-4
+1. `prepare_qualtrics_for_analysis_modified.ipynb`: It analyzed the revision from the surveys results for statistics and BLEU-4
 
 Commands used:
 ```bash
