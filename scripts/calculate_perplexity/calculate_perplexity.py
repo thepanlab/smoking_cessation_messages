@@ -74,13 +74,14 @@ def load_model(config_json):
     elif config_json["language_model"] == "facebook/opt-13b":
         model_loaded = AutoModelForCausalLM.from_pretrained("facebook/opt-13b", torch_dtype=torch.float16).cuda()
     elif config_json["language_model"] == "facebook/opt-30b":
+        # Update: it seems in new version of transformers. Using torch.float16 works perfectly
         # if torch_dtype is not used as parameter, the default value is torch.float16
         # If ran like this, it places more layers on GPU. idk why
-        # model_loaded = AutoModelForCausalLM.from_pretrained("facebook/opt-30b", device_map="auto",
-        #                                                      torch_dtype=torch.float16,
-        #                                                      offload_folder='./offload_folder')
         model_loaded = AutoModelForCausalLM.from_pretrained("facebook/opt-30b", device_map="auto",
-                                                            offload_folder='./offload_folder')
+                                                             torch_dtype=torch.float16,
+                                                             offload_folder='./offload_folder')
+        # model_loaded = AutoModelForCausalLM.from_pretrained("facebook/opt-30b", device_map="auto",
+        #                                                     offload_folder='./offload_folder')
         print(colored("model.dtype: {model.dtype}","green"))
         print(model_loaded.hf_device_map)
         print(colored("For model opt-30b, option device_map='auto' automatically determine where to put each layer to maximize the use of your fastest devices (GPUs) and offload the rest on the CPU", "green"))
@@ -116,6 +117,7 @@ def get_max_length(model,config_json):
         max_length = model.config.max_position_embeddings # 2048
     elif config_json["language_model"] == "facebook/opt-30b":
         max_length = model.config.max_position_embeddings # 2048
+    print("max_length", max_length)
     return max_length
 
 def get_perplexity_one_file(filepath, model, tokenizer, config_json):
@@ -134,8 +136,10 @@ def get_perplexity_one_file(filepath, model, tokenizer, config_json):
     str_rows_joined = "\n\n".join(list_rows)
 
     encodings = tokenizer(str_rows_joined, return_tensors="pt")
-
+    
     stride = config_json["stride"]
+    # version 4.20.1
+    # https://huggingface.co/docs/transformers/v4.20.1/en/perplexity
     nlls = []
     for i in tqdm(range(0, encodings.input_ids.size(1), stride)):
         begin_loc = max(i + stride - max_length, 0)
@@ -152,6 +156,37 @@ def get_perplexity_one_file(filepath, model, tokenizer, config_json):
         nlls.append(neg_log_likelihood)
 
     ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
+
+    # 4.31.0
+    # https://huggingface.co/docs/transformers/perplexity
+
+    # seq_len = encodings.input_ids.size(1)
+    # print("seq_len", seq_len)
+
+    # nlls = []
+    # prev_end_loc = 0
+    # for begin_loc in tqdm(range(0, seq_len, stride)):
+    #     end_loc = min(begin_loc + max_length, seq_len)
+    #     trg_len = end_loc - prev_end_loc  # may be different from stride on last loop
+    #     input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+    #     target_ids = input_ids.clone()
+    #     target_ids[:, :-trg_len] = -100
+
+    #     with torch.no_grad():
+    #         outputs = model(input_ids, labels=target_ids)
+
+    #         # loss is calculated using CrossEntropyLoss which averages over valid labels
+    #         # N.B. the model only calculates loss over trg_len - 1 labels, because it internally shifts the labels
+    #         # to the left by 1.
+    #         neg_log_likelihood = outputs.loss
+
+    #     nlls.append(neg_log_likelihood)
+
+    #     prev_end_loc = end_loc
+    #     if end_loc == seq_len:
+    #         break
+
+    # ppl = torch.exp(torch.stack(nlls).mean())
 
     return ppl.detach().cpu().numpy()
 

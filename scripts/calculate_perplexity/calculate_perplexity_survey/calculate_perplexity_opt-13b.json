@@ -1,0 +1,13 @@
+{
+    "list_filenames":["/home/pcallec/smoking_cessation_messages/results/Qualtrics/messages_per_model/messages_survey_human.csv",
+                      "/home/pcallec/smoking_cessation_messages/results/Qualtrics/messages_per_model/messages_survey_gpt-j-6B.csv",
+                      "/home/pcallec/smoking_cessation_messages/results/Qualtrics/messages_per_model/messages_survey_bloom-7b1.csv",
+                      "/home/pcallec/smoking_cessation_messages/results/Qualtrics/messages_per_model/messages_survey_opt-6.7b.csv",
+                      "/home/pcallec/smoking_cessation_messages/results/Qualtrics/messages_per_model/messages_survey_opt-13b.csv",
+                      "/home/pcallec/smoking_cessation_messages/results/Qualtrics/messages_per_model/messages_survey_opt-30b.csv",
+                      "/home/pcallec/smoking_cessation_messages/results/Qualtrics/messages_per_model/messages_survey_ChatGPT.csv"],
+    "column_to_analyze":"Message",
+    "stride":2048,
+    "language_model":"facebook/opt-13b",
+    "path_output":"/home/pcallec/smoking_cessation_messages/results/Qualtrics/perplexity/opt-13b_perplexity"    
+}
