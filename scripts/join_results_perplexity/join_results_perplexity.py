@@ -183,38 +183,45 @@ def get_decoding_version(description):
         return version
 
 
-def get_model(description):
+def get_model(description, config_json):
     # split the messages
     
     if description == "original":
         return "human"
     else:
         l_split = description.split("_")
-        version = l_split[5]
+        if config_json["type"] != "survey":
+            version = l_split[5]
+        else:
+            version = l_split[2][:-4]
         return version
 
 
-def prepare_perplexity_file(filepath):
+def prepare_perplexity_file(filepath, config_json):
     df_perplexity = pd.read_csv(filepath, index_col=0)
 
-    # rename whole dataset
+    # rename human messages dataset
     df_perplexity['filename'] = df_perplexity['filename'].\
                                 replace(['Treatment messages by type 9-23-21.csv'],
                                         'original')
     
     # Remove train and val
-    df_perplexity = df_perplexity.drop([1, 2]).reset_index(drop=True)
-    
+    if config_json["type"] != "survey":
+        df_perplexity = df_perplexity.drop([1, 2]).reset_index(drop=True)
+
     df_perplexity["model"] = df_perplexity.apply(lambda x: \
-                                get_model(x["filename"]), axis=1)
-    df_perplexity["prompt_version"] = df_perplexity.apply(lambda x: \
-                                        get_prompt_version(x["filename"]), axis=1)
-    df_perplexity["decoding_version"] = df_perplexity.apply(lambda x: \
-                                            get_decoding_version(x["filename"]), axis=1)
-    
+                             get_model(x["filename"], config_json), axis=1)
+    if config_json["type"] != "survey":
+
+        df_perplexity["prompt_version"] = df_perplexity.apply(lambda x: \
+                                            get_prompt_version(x["filename"]), axis=1)
+        df_perplexity["decoding_version"] = df_perplexity.apply(lambda x: \
+                                                get_decoding_version(x["filename"]), axis=1)
+
     # change name of perplexity
     # df_ppl["perplexity"] = 
     filename = os.path.basename(filepath)
+    
     model = filename.split("_")[2][:-4]
 
     df_perplexity.rename(columns={'perplexity': f'perplexity_{model}'},
@@ -227,15 +234,18 @@ def get_df_perplexity_joined(config_json):
 
     l_df = []
     for filepath in config_json["perplexity_filenames"]:
-        df_ppl_prepared = prepare_perplexity_file(filepath)
+        df_ppl_prepared = prepare_perplexity_file(filepath, config_json)
         l_df.append(df_ppl_prepared)
 
     # change order of columns
     # 1st dataframe
     # assuming the perplexity is in column index 1
-    df_joined = l_df[0].loc[:, ["model", "prompt_version",
-                                "decoding_version", l_df[0].columns[1]]]
-
+    if config_json["type"] != "survey":
+        df_joined = l_df[0].loc[:, ["model", "prompt_version",
+                                    "decoding_version", l_df[0].columns[1]]]
+    else:
+        df_joined = l_df[0].loc[:, ["model", l_df[0].columns[1]]]
+        
     for i in range(1, len(l_df)):
         df_joined = pd.concat([df_joined,
                                l_df[i].loc[:, l_df[i].columns[1]]],
