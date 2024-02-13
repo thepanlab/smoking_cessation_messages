@@ -109,59 +109,69 @@ def get_file_to_sentences(config_json):
                 l_end_search_subset = l_end_search[number_of_messages_per_prompt:]
 
                 # discarding the last message because it may be not complete
-                for i_regex in range(len(l_start_search_subset) - 1):
-                    # Check if the message is empty
-                    if l_start_search_subset[i_regex+1] - l_end_search_subset[i_regex] <=1:
-                        continue
-                    else:
-                        # if message is not empty
-                        # then extract like this
-                        # Remember match start and end give the indices of the start
-                        # and end of the substring
-                        # ^: start, @: end
-                        # \n\n1. Message 1
-                        #   ^   @             match1 = text[^:@]         
-                        # \n\n2. Message 2
-                        #   ^   @              match2 = text[^:@]
-                        # \n\n3. Message 3
-                        #   ^   @
-                        # The idea is to extract from @+1 to the next ^
-                        
-                        # For the last character of sentence we need to verify that:
-                        # if the last character is \n
-                        #     reduced message by one character to deleter \n
-                        # else:
-                        #     nothing
-
-                        # if last character is ":"/colon
-                        #     extract until the penultimate sentence
-                        #     return/ get out of for loop
-                        # else:
-                        #     store message and continue for loop
-                        
-                        extracted_message = df_generated.iloc[i_row,0][l_end_search_subset[i_regex]+1:
-                                                                       l_start_search_subset[i_regex+1]]
-                       
-                        if extracted_message[-1] == "\n":
-                            extracted_message = extracted_message[:-1]
-                        
-                        if extracted_message[-1] == ":":
-                            # create a message until the end
-                            # check last character is new line or not
-                            if df_generated.iloc[i_row,0][l_start_search_subset[len(l_start_search_subset)-1]] == "\n":
-                                extracted_message = df_generated.iloc[i_row,0][l_end_search_subset[i_regex]+1:
-                                                                                      l_start_search_subset[len(l_start_search_subset)-1]-1]
-                            else:
-                                extracted_message = df_generated.iloc[i_row,0][l_end_search_subset[i_regex]+1:
-                                                                                      l_start_search_subset[len(l_start_search_subset)-1]]
-                            l_messages.append(extracted_message)
-                            l_index.append(i_row)
-                            l_message_position.append(i_regex) 
-                            break                           
+                # For ChatGPT is not necessary because it does it perfectly
+                
+                if len(l_start_search_subset) == 1:
+                    extracted_message = df_generated.iloc[i_row,0][l_start_search_subset[0]:]
+                    extracted_message = extracted_message.strip("\n\r")
+                    
+                    l_messages.append(extracted_message[3:])
+                    l_index.append(i_row)
+                    l_message_position.append(0)
+                else:
+                    for i_regex in range(len(l_start_search_subset) - 1):
+                        # Check if the message is empty
+                        if l_start_search_subset[i_regex+1] - l_end_search_subset[i_regex] <=1:
+                            continue
                         else:
-                            l_messages.append(extracted_message)
-                            l_index.append(i_row)
-                            l_message_position.append(i_regex)
+                            # if message is not empty
+                            # then extract like this
+                            # Remember match start and end give the indices of the start
+                            # and end of the substring
+                            # ^: start, @: end
+                            # \n\n1. Message 1
+                            #   ^   @             match1 = text[^:@]         
+                            # \n\n2. Message 2
+                            #   ^   @              match2 = text[^:@]
+                            # \n\n3. Message 3
+                            #   ^   @
+                            # The idea is to extract from @+1 to the next ^
+                            
+                            # For the last character of sentence we need to verify that:
+                            # if the last character is \n
+                            #     reduced message by one character to deleter \n
+                            # else:
+                            #     nothing
+
+                            # if last character is ":"/colon
+                            #     extract until the penultimate sentence
+                            #     return/ get out of for loop
+                            # else:
+                            #     store message and continue for loop
+                            
+                            extracted_message = df_generated.iloc[i_row,0][l_end_search_subset[i_regex]+1:
+                                                                        l_start_search_subset[i_regex+1]]
+                        
+                            if extracted_message[-1] == "\n":
+                                extracted_message = extracted_message[:-1]
+                            
+                            if extracted_message[-1] == ":":
+                                # create a message until the end
+                                # check last character is new line or not
+                                if df_generated.iloc[i_row,0][l_start_search_subset[len(l_start_search_subset)-1]] == "\n":
+                                    extracted_message = df_generated.iloc[i_row,0][l_end_search_subset[i_regex]+1:
+                                                                                        l_start_search_subset[len(l_start_search_subset)-1]-1]
+                                else:
+                                    extracted_message = df_generated.iloc[i_row,0][l_end_search_subset[i_regex]+1:
+                                                                                        l_start_search_subset[len(l_start_search_subset)-1]]
+                                l_messages.append(extracted_message)
+                                l_index.append(i_row)
+                                l_message_position.append(i_regex) 
+                                break                           
+                            else:
+                                l_messages.append(extracted_message)
+                                l_index.append(i_row)
+                                l_message_position.append(i_regex)
 
                 print("Hello World")
         elif "v4" in filename:
@@ -202,7 +212,9 @@ def get_file_to_sentences(config_json):
                         
                         if extracted_message[-1] == "\n":
                             extracted_message = extracted_message[:-1]
-                            
+                        
+                        extracted_message = extracted_message.strip("\n\r")
+
                         l_messages.append(extracted_message)
                         l_index.append(i_row)
                         l_message_position.append(i_regex)
@@ -249,17 +261,49 @@ def get_file_to_sentences(config_json):
                             else:
                                 extracted_message = output_subset[l_end_search[i_regex]+1:
                                                                                l_start_search[len(l_start_search)-1]]
+                            extracted_message = extracted_message.strip("\n\r")
+
                             l_messages.append(extracted_message)
                             l_index.append(i_row)
                             l_message_position.append(i_regex) 
                             break                           
                         else:
+                            extracted_message = extracted_message.strip("\r\n")
+
                             l_messages.append(extracted_message)
                             l_index.append(i_row)
                             l_message_position.append(i_regex)
 
                 print("Hello World")
+        elif "v5" in filename:
 
+            for i_row in range(df_generated.shape[0]):
+                l_start_search = []
+                l_end_search = []
+                index_numeric = number_of_messages_per_prompt + 1
+                while True:
+                    x = re.search(rf"\n\nMessage {index_numeric}:", df_generated.iloc[i_row,0])
+
+                    if x is None:
+                        break
+
+                    index_numeric+=1
+
+                    l_start_search.append(x.start())
+                    l_end_search.append(x.end())
+                
+                if len(l_start_search) > 1:
+                    for i_regex in range(len(l_start_search) - 1):
+                        l_messages.append(df_generated.iloc[i_row,0][l_end_search[i_regex]+1:l_start_search[i_regex+1]])
+                        l_index.append(i_row)
+                        l_message_position.append(i_regex)
+                else:
+                    l_messages.append(df_generated.iloc[i_row,0][l_end_search[0]+1:])
+                    l_index.append(i_row)
+                    l_message_position.append(0)
+                    
+
+                print("Hello World")
         else:
             raise ValueError("Prompt version not implemented.")
 
