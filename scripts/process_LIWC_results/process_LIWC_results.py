@@ -55,7 +55,7 @@ def get_df_summary(config_json):
     l_column_features = config_json["column_features"]
     
     l_column_df = ["type"]
-    l_column_df.extend([ f"{feature}-{suffix}" for feature in l_column_features for suffix in ["mean","std_err"]])
+    l_column_df.extend([ f"{feature}-{suffix}" for feature in l_column_features for suffix in ["mean", "std_dev", "std_err"]])
     
     a_unique_type = df_LIWC["type"].unique()
     
@@ -78,6 +78,7 @@ def get_df_summary(config_json):
 
             # df_LIWC_summary = pd.concat([df_LIWC_summary,df_temp], ignore_index=True)
             dict_row[f"{feature}-mean"] = mean_temp
+            dict_row[f"{feature}-std_dev"] = std_temp
             dict_row[f"{feature}-std_err"] = std_err
 
         df_temp =pd.DataFrame(dict_row, index=[0])
