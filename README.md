@@ -43,6 +43,8 @@ A dataset of smoking cessation intervention messages developed by [TSET Health P
 1. `summary tables repetition and criteria.ipynb`: it calculates mean, standard deviation, and standard error for number of message at the 
 interaction level.
 
+1. `Process statistics discard and BLEU.ipynb`: it calculates mean, standard deviation, and standard error for the reduction after applying the filtering.
+
 ### Automatic survey generation for Qualtrics
 
 1. `Prepare sentences for surveys.ipynb`: From the joined messages selects randomly 100 for each model.
