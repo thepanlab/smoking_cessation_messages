@@ -40,6 +40,9 @@ A dataset of smoking cessation intervention messages developed by [TSET Health P
 
 1. `process_LIWC_results/process_LIWC_results.py`: it calculates the mean, standard deviation and standardd error for selected LIWC metrics.
 
+1. `summary tables repetition and criteria.ipynb`: it calculates mean, standard deviation, and standard error for number of message at the 
+interaction level.
+
 ### Automatic survey generation for Qualtrics
 
 1. `Prepare sentences for surveys.ipynb`: From the joined messages selects randomly 100 for each model.
